@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+body {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+.div {
+  display: none;
+}
+button {
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+.wrapper {
+  margin: 0 auto;
+  max-width: 1440px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.main-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}

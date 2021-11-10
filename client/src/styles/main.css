@@ -1,0 +1,80 @@
+
+
+.main-screen{
+  background: url(/src/assets/view/main-backgraund.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+color: #fff;
+
+}
+.main-header{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.settings-icon{
+  background: url(/src/assets/view/settings.svg);
+  background-size: cover;
+  margin: 10px;
+}
+.artist-btn,
+.pictures-btn{
+  background: transparent;
+  border: 1px #fff solid;
+  border-radius: 10px;
+  line-height: 20px;
+  color: #fff;
+}
+.logo {
+  background-image: url(/src/assets/view/artquizlogowhite.svg);
+  background-size: cover;
+  margin: 0 auto;
+}
+.developer-github {
+  
+  font-size: 30px;
+  color: #fff;
+}
+.main-footer{
+  display: flex;
+  align-items: flex-end;
+
+justify-content: space-between;
+width: 100%;
+}
+.logo-footer-rss {
+  background-image: url(/src/assets/view/rss-logo.png);
+  background-size: cover;
+  width: 63px;
+  height: 23px;
+}
+@media screen and (max-width: 360px) {
+  .settings-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .main-main{
+    margin-top: 107%;
+    margin-bottom: 25px;
+  }
+  .logo{
+    
+    height: 62px;
+    width: 166px;
+    
+  }
+  .kind-of-game-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+  .artist-btn{
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+  .developer-github {
+  
+    font-size: 14px;
+    color: #fff;
+  }
+}
