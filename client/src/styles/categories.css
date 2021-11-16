@@ -1,0 +1,178 @@
+.wrapper {
+  color: #fff;
+  background-color: black;
+}
+.categories-screen {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.footer {
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+.categories-header,
+.categories-main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.categories-header {
+  padding-top: 20px;
+}
+.header-left,
+.categories-header,
+.header-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-left {
+  max-width: 600px;
+  width: 100%;
+}
+
+.header-logo-dcolor {
+  background: url(../assets/view/logo-double-color.svg);
+  width: 166px;
+  height: 62px;
+  display: block;
+}
+.header-navigation {
+  max-width: 257px;
+  width: 100%;
+}
+.score {
+  display: none;
+}
+.home:hover,
+.categories:hover,
+.score:hover {
+  color: #ffbca2;
+  cursor: pointer;
+}
+
+.categories-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1299px;
+    width: 100%;
+}
+
+@media screen and (max-width: 360px) {
+  .footer {
+    visibility: hidden;
+  }
+  .header-navigation{
+      position: absolute;
+      bottom: 0;
+      left: 0px;
+      display: flex;
+      align-items: center;
+      max-width: 360px;
+      width: 100%;
+      height: 75px;
+      margin: 0 auto;
+      border-top: 2px solid #fff;
+      border-radius: 20px;
+  }
+  .home:hover,
+  .categories:hover,
+  .score:hover{
+    filter: invert(82%) sepia(13%) saturate(1842%) hue-rotate(312deg)
+    brightness(107%) contrast(101%);
+    cursor: pointer;
+  }
+  .home{
+      background: url(../assets/view/home.svg);
+      width: 31px;
+      margin-left: 50px;
+      
+  }
+  .categories {
+      background: url(../assets/view/categies.svg);
+      width: 58px;
+      
+  }
+  .score{
+      background: url(../assets/view/score.svg);
+      width:30px;
+      margin-right: 50px;
+  }
+  .home,
+  .categories,
+  .score {
+    font-size: 0;
+    height: 48px;
+  }
+
+}
+@media screen and (max-width: 768px) {
+  .score {
+    display: block;
+  }
+  .header-left {
+    max-width: 550px;
+  }
+  
+  
+}
+.card{
+    margin: 12px;
+}
+.card:nth-child(7),
+.card:first-child{
+    margin-left: 0px;
+}
+.card:nth-child(6),
+.card:last-child{
+    margin-right: 0px;
+}
+.image-categories{
+    height: 206px;
+    width: 195px;
+    
+    border-radius: 25px;
+    background-size: cover;
+    margin-top: 10px;
+}
+
+.portrait .image-categories{
+    background: url(../assets/view/port.jpg);
+}
+.landscape .image-categories{
+    background: url(../assets/view/land.jpg);
+}
+.still-life .image-categories{
+    background: url(../assets/view/stilllife.jpg);
+}
+.impressionism .image-categories{
+    background: url(../assets/view/impres.jpg);
+}
+.expressionism .image-categories{
+    background: url(../assets/view/expres.jpg);
+}
+.avant-garde .image-categories{
+    background: url(../assets/view/avantgard.jpg);
+}
+.renaissance .image-categories{
+    background: url(../assets/view/renaiss.jpg);
+}
+.surrealism .image-categories{
+    background: url(../assets/view/surr.jpg);
+}
+.kitsch .image-categories{
+    background: url(../assets/view/kitsch.jpg);
+}
+.minimalism .image-categories{
+    background: url(../assets/view/minimal.jpg);
+}
+.interior .image-categories{
+    background: url(../assets/view/interior.jpg);
+}
+.nude .image-categories{
+    background: url(../assets/view/nude.jpg);
+}
