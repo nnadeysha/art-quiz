@@ -75,7 +75,8 @@ button {
 .artist-btn,
 .pictures-btn,
 .default-settings-button,
-.save-settings-button
+.save-settings-button,
+.artist-answer
  {
   background: transparent;
   border: 2px #fff solid;
@@ -89,7 +90,8 @@ button {
 .artist-btn:hover,
 .pictures-btn:hover,
 .default-settings-button:hover,
-.save-settings-button:hover{
+.save-settings-button:hover,
+.artist-answer:hover{
   background: #FFBCA2;
   color: black;
 }
@@ -108,6 +110,11 @@ button {
   width: 85px;
   height: 31px;
 }
+@media screen and (max-width: 768px) {
+ .footer, .developer-github{
+   font-size: 16px;
+ }
+}
 @media screen and (max-width: 360px) {
   .logo {
     height: 62px;
@@ -122,4 +129,11 @@ button {
     width: 63px;
     height: 23px;
   }
+}
+.close-button{
+  background: url(../assets/view/close-settings.svg);
+  background-repeat: no-repeat;
+  width: 18px;
+  height: 18px;  
+  padding: 5px;
 }

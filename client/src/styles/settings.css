@@ -94,13 +94,7 @@
   width: 100%;
   align-items: flex-end;
 }
-.close-button{
-  background: url(../assets/view/close-settings.svg);
-  background-repeat: no-repeat;
-  width: 18px;
-  height: 18px;  
-  padding: 5px;
-}
+
 .volume-icons{
   display: flex;
   justify-content: space-between;
