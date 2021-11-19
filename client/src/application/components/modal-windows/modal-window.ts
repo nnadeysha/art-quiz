@@ -13,14 +13,23 @@ export class ModalWindow extends Control {
     modalGrand: GrandModalWindow;
     modalGameOver: GameOvertModalWindow;
     constructor(parentNode: HTMLElement){
-        super(parentNode, "div", "modal-screen", "Бесплатный сервис Google позволяет мгновенно переводить слова, фразы и веб-страницы с английского более чем на 100 языков и обратно.");
+        super(parentNode, "div", "modal-screen hide");
 
         this.overlay = new Control(this.node, "div", "overlay");
         this.modalWindow = new Control(this.overlay.node, "div", "modal-window");
-
-        //this.modalContent = new CorrectOrWrongAnswerModal(this.modalWindow.node)
-        //this.modalCongrat = new CongratModalWindow(this.modalWindow.node)
-        //this.modalGrand = new GrandModalWindow(this.modalWindow.node)
+        this.modalContent = new CorrectOrWrongAnswerModal(this.modalWindow.node)
+        this.modalCongrat = new CongratModalWindow(this.modalWindow.node)
+        this.modalGrand = new GrandModalWindow(this.modalWindow.node)
         this.modalGameOver= new GameOvertModalWindow(this.modalWindow.node)
     }
+
+    hide() {
+        this.node.classList.remove("show");
+        this.node.classList.add("hide");
+      }
+    
+      show(){
+        this.node.classList.remove("hide");
+        this.node.classList.add("show");
+      }
 }

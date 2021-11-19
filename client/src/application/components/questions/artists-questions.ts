@@ -20,13 +20,15 @@ export class QuestionsArtists extends Control{
     artistSlider: Control<HTMLElement>;
     slideCircle: Control<HTMLElement>;
     slider: SliderCircle;
+  questionsMainWrapper: Control<HTMLElement>;
     constructor(parentNode: HTMLElement){
-        super(parentNode, "div", "questions-block");
+        super(parentNode, "div", "questions-block hide");
 
         this.questionsWrapper = new Control(this.node, "div", "questions-wrapper")
         this.questionsHeader = new QuestionsHeader(this.questionsWrapper.node);
-        this.questionsArtistMain = new Control(this.questionsWrapper.node, "div", "artist-main");
-        this.artistQuestion = new Control(this.questionsArtistMain.node, "div", "artist-question", "Тут будет ворос");
+        this.questionsMainWrapper = new Control(this.questionsWrapper.node, "div", "question-main-wrapper")
+        this.questionsArtistMain = new Control(this.questionsMainWrapper.node, "div", "artist-main");
+        this.artistQuestion = new Control(this.questionsArtistMain.node, "div", "artist-question", "WHO IS THE AUTHOR OF THIS PICTURE?");
         this.artistAnswerSlider = new Control(this.questionsArtistMain.node, "div", "answer-slider");
         this.artistPicture = new Control(this.artistAnswerSlider.node, "div", "artist-picture");
         this.slider = new SliderCircle(this.artistAnswerSlider.node)
@@ -39,4 +41,14 @@ export class QuestionsArtists extends Control{
         
         this.footer = new Footer(this.node);
     }
+
+    hide() {
+        this.node.classList.remove("show");
+        this.node.classList.add("hide");
+      }
+    
+      show(){
+        this.node.classList.remove("hide");
+        this.node.classList.add("show");
+      }
 }

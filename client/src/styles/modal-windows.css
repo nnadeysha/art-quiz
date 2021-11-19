@@ -1,6 +1,4 @@
-.wrapper {
-  background-color: #fff;
-}
+
 
 .overlay {
   width: 100%;
@@ -74,7 +72,7 @@
   width: 100%;
 }
 .navigation-congrat,
-.navigation-game-over{
+.navigation-game-over {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -82,20 +80,20 @@
 .home-congrat-button,
 .next-congrat-button,
 .no-button,
-.yes-button{
+.yes-button {
   max-width: 210px;
   width: 100%;
   height: 62px;
   border-radius: 30px;
   font-weight: 500;
-font-size: 22px;
-line-height: 22px;
-cursor: pointer;
+  font-size: 22px;
+  line-height: 22px;
+  cursor: pointer;
 }
 .home-congrat-button:hover,
 .next-congrat-button:hover,
 .no-button:hover,
-.yes-button:hover{
+.yes-button:hover {
   background: #ffbca2;
   border: 2px #fff solid;
 }
@@ -118,140 +116,136 @@ cursor: pointer;
   background: url(../assets/view/correct.png);
 }
 .wrong {
-    background: url(../assets/view/wrong.png);
+  background: url(../assets/view/wrong.png);
 }
 
 /* CONGRATULATIONS */
-.img-congrat{
+.img-congrat {
   background: url(../assets/view/champion-cup.png);
   max-width: 189px;
   width: 100%;
   height: 178px;
 }
-.modal-window-short{
+.modal-window-short {
   max-height: 608px;
   margin: 40px;
-  
 }
 
-.score-congrat{
+.score-congrat {
   font-weight: bold;
-font-size: 82px;
-line-height: 102px;
+  font-size: 82px;
+  line-height: 102px;
 }
 
-.title-congrat{
+.title-congrat {
   font-weight: 600;
-font-size: 42px;
-line-height: 51px;
-text-align: center;
+  font-size: 42px;
+  line-height: 51px;
+  text-align: center;
 }
 
 /* GRAND */
-.img-grand{
+.img-grand {
   background: url(../assets/view/starts.png);
   max-width: 322px;
   width: 100%;
   height: 125px;
 }
 
-.title-grand{
+.title-grand {
   font-weight: bold;
   font-size: 77.8195px;
   line-height: 78px;
   text-align: center;
 }
-.subtitle-grand{
+.subtitle-grand {
   text-align: center;
   font-weight: normal;
-font-size: 42px;
-line-height: 50px;
+  font-size: 42px;
+  line-height: 50px;
 }
 
 /* GAME OVER */
-.img-game-over{
+.img-game-over {
   background: url(../assets/view/over-champion-cup.png);
 }
 
-.title-game-over{
+.title-game-over {
   font-weight: bold;
   font-size: 62px;
   line-height: 90px;
   text-align: center;
 }
-.subtitle-game-over{
+.subtitle-game-over {
   font-weight: normal;
-font-size: 42px;
-line-height: 50px;
-text-align: center;
+  font-size: 42px;
+  line-height: 50px;
+  text-align: center;
 }
 @media screen and (max-width: 360px) {
   .modal-window {
     max-width: 328px;
     height: 436px;
-    
   }
-  .title-congrat{
+  .title-congrat {
     font-weight: 500;
-font-size: 22px;
-line-height: 28px;
+    font-size: 22px;
+    line-height: 28px;
   }
 
   .home-congrat-button,
-.next-congrat-button{
+  .next-congrat-button {
     font-weight: 500;
-font-size: 16px;
-line-height: 18px;
-max-width: 150px;
-  width: 100%;
-  height: 48px;
+    font-size: 16px;
+    line-height: 18px;
+    max-width: 150px;
+    width: 100%;
+    height: 48px;
   }
 
-  .score-congrat{
+  .score-congrat {
     font-size: 48px;
-line-height: 28px;
+    line-height: 28px;
   }
   .img-congrat,
-  .img-game-over{
+  .img-game-over {
     max-width: 169px;
-  width: 100%;
-  height: 160px;
- 
+    width: 100%;
+    height: 160px;
   }
-  .modal-window-short{
-    
+  .modal-window-short {
     margin: 10px;
-    
   }
-  .title-grand{
+  .title-grand {
     font-size: 52.3417px;
-line-height: 52px;
+    line-height: 52px;
   }
-  .subtitle-grand{
+  .subtitle-grand {
     font-weight: 500;
-font-size: 22px;
-line-height: 28px;
+    font-size: 22px;
+    line-height: 28px;
   }
-  .img-grand{
+  .img-grand {
     max-width: 276px;
     height: 107px;
   }
   .img-grand,
   .img-congrat,
-  .img-game-over
-  {background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;}
-
-  .title-game-over{
-    font-weight: bold;
-font-size: 36px;
-line-height: 28px;
+  .img-game-over {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
-  .subtitle-game-over{
+  .title-game-over {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 28px;
+  }
+
+  .subtitle-game-over {
     font-size: 22px;
-line-height: 28px;
+    line-height: 28px;
   }
 }
 @media screen and (max-width: 768px) {

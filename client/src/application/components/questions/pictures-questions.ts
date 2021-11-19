@@ -14,11 +14,13 @@ export class QuestionsPictures extends Control{
     slider: SliderCircle;
     picture: Control<HTMLElement>;
     pictures: Control<HTMLElement>;
+  questionsMainWrapper: Control<HTMLElement>;
     constructor(parentNode: HTMLElement){
-        super(parentNode, "div", "questions-block");
+        super(parentNode, "div", "questions-block hide");
         this.questionsWrapper = new Control(this.node, "div", "questions-wrapper")
         this.questionsHeader = new QuestionsHeader(this.questionsWrapper.node);
-        this.questionsPicturesMain = new Control(this.questionsWrapper.node, "div", "pictures-main");
+        this.questionsMainWrapper = new Control(this.questionsWrapper.node, "div", "question-main-wrapper")
+        this.questionsPicturesMain = new Control(this.questionsMainWrapper.node, "div", "pictures-main");
         this.pisturesQuestion = new Control(this.questionsPicturesMain.node, "div", "pictures-question", "Тут будет ворос");
         this.picturesAnswerSlider = new Control(this.questionsPicturesMain.node, "div", "answer-slider");
         this.pictures = new Control(this.picturesAnswerSlider.node, "div", "pictures")
@@ -30,4 +32,14 @@ export class QuestionsPictures extends Control{
         
         this.footer = new Footer(this.node);
     }
+
+    hide() {
+        this.node.classList.remove("show");
+        this.node.classList.add("hide");
+      }
+    
+      show(){
+        this.node.classList.remove("hide");
+        this.node.classList.add("show");
+      }
 }

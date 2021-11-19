@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
 
 * {
   margin: 0;
@@ -6,21 +6,19 @@
   scroll-behavior: smooth;
 }
 body {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
   box-sizing: border-box;
   width: 100%;
-  max-height: 1024px;
   height: 100%;
   font-size: 20px;
   background-color: rgb(24, 19, 19);
 
 }
-/* .div {
-  display: none;
-} */
+
 .back-button,
-a, button{
-  transition:  all .5s linear;
+a,
+button {
+  transition: all 0.5s linear;
 }
 a {
   text-decoration: none;
@@ -30,27 +28,28 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  
 }
 .wrapper {
   margin: 0 auto;
   max-width: 1440px;
   width: 100%;
-  min-height: 100vh;
-  
+  height: 100vh;
+  background: #000;
+  position: relative;
+  display: flex;
 }
 .main-screen {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
+ 
 }
-.developer-github{
+.developer-github {
   text-decoration: none;
   color: #fff;
 }
-.logo-footer-rss{
+.logo-footer-rss {
   background: url(../assets/view/rss-logo.png);
   background-size: cover;
   width: 85px;
@@ -60,15 +59,15 @@ button {
 .settings-icon {
   background: url(/src/assets/view/settings.svg);
   background-size: cover;
-  margin: 10px;
+  margin: 30px;
   width: 30px;
   height: 30px;
 }
 .logo-footer-rss:hover,
-.developer-github:hover{
+.developer-github:hover {
   transform: scale(0.98);
 }
-.settings-icon:hover{
+.settings-icon:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -76,25 +75,27 @@ button {
 .pictures-btn,
 .default-settings-button,
 .save-settings-button,
-.artist-answer
- {
+.artist-answer {
   background: transparent;
   border: 2px #fff solid;
   border-radius: 30px;
   color: #fff;
   font-size: 24px;
   cursor: pointer;
-  
 }
 
 .artist-btn:hover,
 .pictures-btn:hover,
 .default-settings-button:hover,
 .save-settings-button:hover,
-.artist-answer:hover{
-  background: #FFBCA2;
+.artist-answer:hover {
+  background: #fff;
   color: black;
 }
+.active-btn {
+  background: #ffbca2;
+}
+
 .developer-github {
   font-size: 30px;
   color: #fff;
@@ -111,9 +112,10 @@ button {
   height: 31px;
 }
 @media screen and (max-width: 768px) {
- .footer, .developer-github{
-   font-size: 16px;
- }
+  .footer,
+  .developer-github {
+    font-size: 16px;
+  }
 }
 @media screen and (max-width: 360px) {
   .logo {
@@ -130,10 +132,29 @@ button {
     height: 23px;
   }
 }
-.close-button{
+.close-button {
   background: url(../assets/view/close-settings.svg);
   background-repeat: no-repeat;
   width: 18px;
-  height: 18px;  
+  height: 18px;
   padding: 5px;
+}
+
+
+
+
+
+.hide{
+  transform: translateX(-200%);
+  transition:  1s ease;
+ max-width: 0px;
+ width: 0px;
+ overflow: hidden;
+}
+
+.show {
+  /* transform: translateX(0%); */
+  min-width: 100%;
+  transition: width 0.5s ease;
+  height: 100%;
 }

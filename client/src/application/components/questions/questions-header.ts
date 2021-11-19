@@ -12,7 +12,7 @@ export class QuestionsHeader extends Control{
         super(parentNode, "div", "questions-header-wrapper");
 
         this.questionHeader = new Control(this.node, "div", "questions-header");
-        this.closeQuestionBtn = new Control(this.questionHeader.node, "button", "close-auestion-button close-button");
+        this.closeQuestionBtn = new Control(this.questionHeader.node, "button", "close-question-button");
 
         this.progressQuestions = new Control(this.questionHeader.node, "input", "progress-questions");
         this.progressQuestions.node.type = "range";

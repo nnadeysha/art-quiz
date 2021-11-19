@@ -20,6 +20,7 @@ const config = {
     open: true,
     host: "localhost",
   },
+  devtool: "source-map",
   plugins: [
     new HtmlWebpackPlugin({
       favicon: "./src/assets/favicon.ico",
@@ -55,7 +56,7 @@ const config = {
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: "asset",
+        type: "asset/resource",
       },
       {
         test: /\.(?:mp3|wav|ogg|mp4)$/i,
