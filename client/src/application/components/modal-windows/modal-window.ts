@@ -13,7 +13,7 @@ export class ModalWindow extends Control {
     modalGrand: GrandModalWindow;
     modalGameOver: GameOvertModalWindow;
     constructor(parentNode: HTMLElement){
-        super(parentNode, "div", "modal-screen hide");
+        super(parentNode, "div", "modal-screen");
 
         this.overlay = new Control(this.node, "div", "overlay");
         this.modalWindow = new Control(this.overlay.node, "div", "modal-window");

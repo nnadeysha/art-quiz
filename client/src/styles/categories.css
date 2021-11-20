@@ -64,7 +64,7 @@
 .categories-wrapper {
   display: flex;
   flex-wrap: wrap;
-  max-width: 1299px;
+  
   width: 100%;
   font-size: 20px;
 }
@@ -103,7 +103,7 @@
   z-index: 1;
 }
 
-.portrait .image-categories {
+/* .portrait .image-categories {
   background: url(../assets/view/port.jpg);
 }
 .landscape .image-categories {
@@ -138,7 +138,7 @@
 }
 .nude .image-categories {
   background: url(../assets/view/nude.jpg);
-}
+} */
 .image-categories {
   transition: all 0.5s ease;
   cursor: pointer;

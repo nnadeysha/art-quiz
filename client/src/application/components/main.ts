@@ -3,9 +3,7 @@ import "../../styles/main.css";
 import { Footer } from "../components/footer";
 import { SettingsScreen } from "../components/settings-block/settings";
 export class MainScreen extends Control {
-  init() {
-    throw new Error("Method not implemented.");
-  }
+  
   logo: Control<HTMLDivElement>;
   artistBtn: Control<HTMLButtonElement>;
   picturesBtn: Control<HTMLButtonElement>;
@@ -18,9 +16,10 @@ export class MainScreen extends Control {
   yearOfCreation: Control<HTMLParagraphElement>;
   kindOfGame: Control<HTMLDivElement>;
   footer: Footer;
-
+  public onSelect: (result: boolean) => void;
+  public onArtist: (result: boolean) => void;
   constructor(parentNode: HTMLElement) {
-    super(parentNode, "div", "main-screen show", "");
+    super(parentNode, "div", "main-screen", "");
 
     this.mainHeader = new Control(this.node, "div", "main-header");
     this.settingsIcon = new Control(
@@ -50,21 +49,22 @@ export class MainScreen extends Control {
     );
 
     this.footer = new Footer(this.node);
+
+    this.settingsIcon.node.onclick = () => {
+      this.onSelect(true);
+    };
+    this.artistBtn.node.onclick = () => {
+      this.onArtist(true);
+      
+
+
+    };
+    this.picturesBtn.node.onclick = () => {
+      this.onSelect(true);
+    };
   }
 
-  show(){
-    
-    this.node.classList.remove("hide");
-    
-    this.node.classList.add("show");
-  }
-  hide() {
-    this.node.classList.remove("show");
-    
-      this.node.classList.add("hide");
-     
-     
-     
-    
-  }
+
+ 
+  
 }

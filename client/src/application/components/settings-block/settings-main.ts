@@ -38,6 +38,7 @@ export class SettingsMain extends Control{
         this.volumeRange.node.min = "0";
         this.volumeRange.node.max = "100";
         this.volumeRange.node.value = "20";
+        this.volumeRange.node.step = "20";
         this.volumeIcons = new Control(this.volumeInput.node, "div", "volume-icons");
         this.volumeMute = new Control(this.volumeIcons.node, "span", "mute");
         this.volumeUp= new Control(this.volumeIcons.node, "span", "volume-up");

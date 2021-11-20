@@ -16,7 +16,7 @@ export class QuestionsPictures extends Control{
     pictures: Control<HTMLElement>;
   questionsMainWrapper: Control<HTMLElement>;
     constructor(parentNode: HTMLElement){
-        super(parentNode, "div", "questions-block hide");
+        super(parentNode, "div", "questions-block");
         this.questionsWrapper = new Control(this.node, "div", "questions-wrapper")
         this.questionsHeader = new QuestionsHeader(this.questionsWrapper.node);
         this.questionsMainWrapper = new Control(this.questionsWrapper.node, "div", "question-main-wrapper")

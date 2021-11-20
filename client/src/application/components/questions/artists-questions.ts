@@ -22,7 +22,7 @@ export class QuestionsArtists extends Control{
     slider: SliderCircle;
   questionsMainWrapper: Control<HTMLElement>;
     constructor(parentNode: HTMLElement){
-        super(parentNode, "div", "questions-block hide");
+        super(parentNode, "div", "questions-block");
 
         this.questionsWrapper = new Control(this.node, "div", "questions-wrapper")
         this.questionsHeader = new QuestionsHeader(this.questionsWrapper.node);
