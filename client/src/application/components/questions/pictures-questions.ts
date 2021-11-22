@@ -32,14 +32,13 @@ export class QuestionsPictures extends Control{
         
         this.footer = new Footer(this.node);
     }
+    onSelectedPistures(){
+      
+      this.getPicturesQuestions()
+    }
+    async getPicturesQuestions(){
 
-    hide() {
-        this.node.classList.remove("show");
-        this.node.classList.add("hide");
-      }
-    
-      show(){
-        this.node.classList.remove("hide");
-        this.node.classList.add("show");
-      }
+    }
+
+    //WHAT PICTURE DID ${author} WRITE?
 }

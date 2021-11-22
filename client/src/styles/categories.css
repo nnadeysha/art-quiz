@@ -93,61 +93,23 @@
   margin-right: 0px;
 }
 
-.image-categories {
-  height: 206px;
-  width: 195px;
-  border-radius: 25px;
-  background-size: cover;
-  margin-top: 10px;
-  position: relative;
-  z-index: 1;
-}
 
-/* .portrait .image-categories {
-  background: url(../assets/view/port.jpg);
-}
-.landscape .image-categories {
-  background: url(../assets/view/land.jpg);
-}
-.still-life .image-categories {
-  background: url(../assets/view/stilllife.jpg);
-}
-.impressionism .image-categories {
-  background: url(../assets/view/impres.jpg);
-}
-.expressionism .image-categories {
-  background: url(../assets/view/expres.jpg);
-}
-.avant-garde .image-categories {
-  background: url(../assets/view/avantgard.jpg);
-}
-.renaissance .image-categories {
-  background: url(../assets/view/renaiss.jpg);
-}
-.surrealism .image-categories {
-  background: url(../assets/view/surr.jpg);
-}
-.kitsch .image-categories {
-  background: url(../assets/view/kitsch.jpg);
-}
-.minimalism .image-categories {
-  background: url(../assets/view/minimal.jpg);
-}
-.interior .image-categories {
-  background: url(../assets/view/interior.jpg);
-}
-.nude .image-categories {
-  background: url(../assets/view/nude.jpg);
-} */
-.image-categories {
-  transition: all 0.5s ease;
-  cursor: pointer;
-}
 .image-categories:hover {
   filter: saturate(3);
 }
 .image-saturate-non {
   filter: saturate(1);
+}
+.image-categories {
+  height: 206px;
+  width: 195px;
+  border-radius: 25px;
+  margin-top: 10px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  filter: saturate(0.2);
 }
 
 @media screen and (max-width: 768px) {

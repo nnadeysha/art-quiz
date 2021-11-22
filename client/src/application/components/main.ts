@@ -18,6 +18,7 @@ export class MainScreen extends Control {
   footer: Footer;
   public onSelect: (result: boolean) => void;
   public onArtist: (result: boolean) => void;
+  public onPictures: (result: boolean) => void;
   constructor(parentNode: HTMLElement) {
     super(parentNode, "div", "main-screen", "");
 
@@ -60,7 +61,7 @@ export class MainScreen extends Control {
 
     };
     this.picturesBtn.node.onclick = () => {
-      this.onSelect(true);
+      this.onPictures(true);
     };
   }
 

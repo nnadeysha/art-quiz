@@ -5,20 +5,36 @@ import { Categories } from "./components/categories/categories";
 import { QuestionsArtists } from "./components/questions/artists-questions";
 import { QuestionsPictures } from "./components/questions/pictures-questions";
 import { ModalWindow } from "./components/modal-windows/modal-window";
+import Signal from '../common/signal';
+import { GameField } from './game-field';
+import { Victory } from './victory';
+import { IGameFieldOptions } from './dto';
+import { DataHolder, IAnswersInfo } from './components/questions/artists-questions';
+import { GameModel } from './game-model';
+import imagesJSON from "../assets/images.json";
+
 
 export class Application extends Control {
+  
   wrapper: Control<HTMLElement>;
   questionsArtists: QuestionsArtists;
   questionsPictures: QuestionsPictures;
   mainScreen: MainScreen;
   categoriesBlock: Categories;
   settingsScreen: SettingsScreen;
-  modalWindow: ModalWindow;
+  modalWindow: ModalWindow;   
   audio: HTMLAudioElement
+  private dataHolder: DataHolder;
 
   constructor(parentNode: HTMLElement) {
     super(parentNode, "div", "div", "");
     this.wrapper = new Control(this.node, "main", "wrapper");
+    this.dataHolder = new DataHolder();
+    const preloader = new Control(this.node, 'div', '', 'LOADING');
+   this.dataHolder.loadQuestionsInfo().then((data) => {
+      preloader.destroy();
+      this.buildMainPage();
+    });
     /* this.mainScreen = new MainScreen(this.wrapper.node);
     this.settingsScreen = new SettingsScreen(this.wrapper.node);
     this.categoriesBlock = new Categories(this.wrapper.node);
@@ -27,7 +43,7 @@ export class Application extends Control {
     this.modalWindow = new ModalWindow(this.wrapper.node); */
     this.audio = new Audio();
 
-    this.buildMainPage();
+    
     
   }
  
@@ -44,13 +60,13 @@ export class Application extends Control {
         this.onCloseOpenSettings();
       }, 200);
     };
-    main.picturesBtn.node.onclick = () => {
+    main.onPictures = () => {
       this.onPlayClick();
 
       setTimeout(() => {
         main.destroy();
         const category = new Categories(this.wrapper.node);
-        category.categoriesMain.categoriesWrapper.node.onclick = () => {
+        category.onChooseCategory = () => {
           this.onPlayClick();
           setTimeout(() => {
             category.destroy();
@@ -64,12 +80,12 @@ export class Application extends Control {
       setTimeout(() => {
         main.destroy();
         const category = new Categories(this.wrapper.node);
-        category.getArtistCategory();
+        
         category.onChooseCategory = () => {
           this.onPlayClick();
           setTimeout(() => {
             category.destroy();
-            const artQwest = new QuestionsArtists(this.wrapper.node);
+            const artQwest = new QuestionsArtists(this.wrapper.node, this.dataHolder.answersInfo);
           }, 200);
         };
       }, 200);
@@ -103,4 +119,8 @@ export class Application extends Control {
   onBuildCategories() {
     const categories = new Categories(this.wrapper.node);
   }
+
+
+  
+  
 }

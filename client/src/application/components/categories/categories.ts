@@ -3,8 +3,10 @@ import "../../../styles/categories.css";
 import { Footer } from "../footer";
 import {CategoriesHeader} from "./categories-header";
 import {CategoriesMain} from "./categories-main";
+import { IGameFieldOptions } from "../../dto";
 
 export class Categories extends Control {
+  
     footer: Footer;
     categoriesHeader: CategoriesHeader;
     categoriesMain: CategoriesMain;
@@ -24,29 +26,5 @@ export class Categories extends Control {
         }
 
     }
-
-
-     getArtistCategory(){
-       
-      const img = [];
-      img.push(this.categoriesMain.image);
-      for(let k = 0; k < img.length; k++){
-        console.log(img)
-        let count = 0;
-        for(let i = 0; i < 20; i++){
-         count = Math.floor(Math.random() * i + 1);
-        }
-        let url = `url(https://raw.githubusercontent.com/nnadeysha/image-data/master/img/${count}.jpg)`;
-        //this.categoriesMain.cover.image.node.style.background = url;
-  
-        img[k].node.style.background = url;
-      }
-      
-      
-       console.log('dfd')
-      
-    }
-
-
-
 }
+ 
