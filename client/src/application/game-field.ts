@@ -1,4 +1,4 @@
-import Control from '../common/control';
+/* import Control from '../common/control';
 import { IQuestionInfo } from './data-holder';
 import { IGameFieldOptions, IGameResult } from './dto';
 import { GameModel } from './game-model';
@@ -95,4 +95,4 @@ export class QuestionView extends Control {
       };
     });
   }
-}
+} */

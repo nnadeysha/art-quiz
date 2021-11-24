@@ -1,27 +1,7 @@
 import Control from "../../../common/control";
-import { IQuestionInfo } from '../../data-holder';
+import { DataHolder, ICategoryData } from '../../data-holder';
 import {IGameFieldOptions} from '../../dto'
 
-const titles = [
-  'Portarait',
-  'Landscape',
-  'Still life',
-  'Graphic',
-  'Antique',
-  'Impressionism',
-  'Expressionism',
-  'Renaissance',
-  'Surrealism',
-  'Kitsch',
-  'Minimalism',
-  'interior'
-]
-
-interface ICardCategory{
-  title: string,
-  score: string,
-  img: string
-}
 export class CategoriesMain extends Control {
   surrealism: Control<HTMLElement>;
   settingsIcon: Control<HTMLElement>;
@@ -50,8 +30,11 @@ export class CategoriesMain extends Control {
   categoriesTitle: Control<HTMLElement>;
   cover: Control<HTMLElement>;
   cattegory: Control<HTMLElement>;
+
+  categories: Array<HTMLElement>
  public onStartButtonClick: (options: IGameFieldOptions) => void;
-  constructor(parentNode: HTMLElement) {
+ public onCategorySelect: (index: number)=>void;
+  constructor(parentNode: HTMLElement, data: Array<ICategoryData>) {
     super(parentNode, "div", "categories-main", "");
     this.categoriesTitle = new Control(
       this.node,
@@ -72,6 +55,14 @@ this.cattegory = this.categoriesWrapper
     );
     this.heading = new Control(this.cover.node, "div", "heading");
     this.title = new Control(this.heading.node, "div", "title", "1");
+    data.forEach((item, index) =>{
+      this.title.node.textContent = item.name;
+      this.cattegory.node.onclick = () => {
+        this.onCategorySelect(index)
+      }
+    })
+    
+    
     this.score = new Control(this.heading.node, "div", "score-categories", "");
     this.image = new Control(this.cover.node, "div", "image-categories");
 
@@ -199,22 +190,30 @@ this.cattegory = this.categoriesWrapper
     this.title = new Control(this.heading.node, "div", "title", "12");
     this.score = new Control(this.heading.node, "div", "score-categories", "");
     this.image = new Control(this.cover.node, "div", "image-categories");
-    this.getImgForCategoryCard();
+    this.getImgForCategoryArtistCard();
+    this.getImgForCategoryPisturestCard()
   }
- async getCategoryPhoto(){
-  const categoriCard = [];
-  for(let i = 0; i < 12; i++){
-    
-  }
- }
 
-  getImgForCategoryCard(){
+  getImgForCategoryArtistCard(){
+    let cat = this.categories;
+  //  this.image.node.style.background = url
   const allSubMenus : NodeListOf<Element> = document.querySelectorAll('.image-categories');
   for (const sub of allSubMenus as any){ // then will pass compiler
-    let count = 0;
-     for(let i = 0; i < 30; i++){
-      count = Math.floor(Math.random() * i + 1);
-     }
+  
+    let count = this.getrandomNumber(0, 120)
+     let url = `url(https://raw.githubusercontent.com/nnadeysha/image-data/master/img/${count}.jpg)`;
+     sub.style.background = url;
+     sub.style.backgroundPosition = "center";
+     sub.style.backgroundRepeat = "no-repeat";
+     sub.style.backgroundSize =  "cover";
+    
+  }  
+ }
+
+ getImgForCategoryPisturestCard(){
+  const allSubMenus : NodeListOf<Element> = document.querySelectorAll('.image-categories');
+  for (const sub of allSubMenus as any){ // then will pass compiler
+    let count = this.getrandomNumber(121, 140)
      let url = `url(https://raw.githubusercontent.com/nnadeysha/image-data/master/img/${count}.jpg)`;
      sub.style.background = url;
      sub.style.backgroundPosition = "center";
@@ -224,8 +223,33 @@ this.cattegory = this.categoriesWrapper
   }  
  }
  
+ getrandomNumber(min: number, max: number) {
+  let rand = min + Math.random() * (max + 1 - min);
+  return Math.floor(rand);
 }
-/*    export class Lobby extends Control {
+}
+/*   
+
+
+
+answers.forEach(el => {
+        const artistsQuest = [];
+        if(Number(el.imageNum) < 120){
+          
+          return artistsQuest.push(el)
+        }
+
+
+
+
+
+
+
+
+
+
+
+export class Lobby extends Control {
   public onStartButtonClick: (options: IGameFieldOptions) => void;
 
   constructor(parentNode: HTMLElement, questionCount: number) {

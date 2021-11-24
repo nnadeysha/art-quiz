@@ -2,6 +2,10 @@ import Control from "../../common/control";
 import "../../styles/main.css";
 import { Footer } from "../components/footer";
 import { SettingsScreen } from "../components/settings-block/settings";
+import { QuestionsArtists } from "./questions/artists-questions";
+import { Categories } from "./categories/categories";
+import { QuestionsPictures } from "./questions/pictures-questions";
+import { DataHolder } from "../data-holder";
 export class MainScreen extends Control {
   
   logo: Control<HTMLDivElement>;
@@ -19,6 +23,7 @@ export class MainScreen extends Control {
   public onSelect: (result: boolean) => void;
   public onArtist: (result: boolean) => void;
   public onPictures: (result: boolean) => void;
+  //public answersInfo: IAnswersInfo[];
   constructor(parentNode: HTMLElement) {
     super(parentNode, "div", "main-screen", "");
 
@@ -56,7 +61,8 @@ export class MainScreen extends Control {
     };
     this.artistBtn.node.onclick = () => {
       this.onArtist(true);
-      
+      /* const categories = new Categories(parentNode, this.answersInfo);
+      console.log(categories) */
 
 
     };

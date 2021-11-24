@@ -8,7 +8,8 @@ export class CategoriesHeader extends Control {
     homeBtn: Control<HTMLAnchorElement>;
     categoriesBtn: Control<HTMLAnchorElement>;
     scoreBtn: Control<HTMLElement>;
-    
+    public onSelect: (result: boolean) => void;
+    public onSelectHome: (result: boolean) => void;
     constructor(parentNode:HTMLElement){
         super(parentNode, "div", "categories-header", "");
         this.headerLeft = new Control(this.node, "div", "header-left");
@@ -18,6 +19,15 @@ export class CategoriesHeader extends Control {
         this.categoriesBtn= new Control(this.headerNavigation.node, "a", "categories", "Categories")
         this.scoreBtn= new Control(this.headerNavigation.node, "a", "score", "Score")
         this.settingsIcon = new Control(this.node, "button", "settings-icon")
+
+        this.settingsIcon.node.onclick = () => {
+            this.onSelect(true);
+          };
+
+          this.homeBtn.node.onclick = ()=>{
+              this.onSelectHome(true)
+          }
         
     }
+    
 }

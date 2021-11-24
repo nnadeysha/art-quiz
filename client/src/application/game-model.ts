@@ -1,4 +1,4 @@
-import { IQuestionInfo } from './data-holder';
+/* //import { IQuestionInfo } from './data-holder';
 
 export class GameModel {
   private cache: Map<string, Blob> = new Map();
@@ -38,4 +38,4 @@ export class GameModel {
       return this.cache.get(url);
     }
   }
-}
+} */

@@ -24,7 +24,7 @@
 
 .artist-picture {
   position: relative;
-  background: url(../assets/view/plugForArtistPicture.jpg);
+/*   background: url(../assets/view/plugForArtistPicture.jpg); */
   background-position: center;
   background-size: cover;
   width: 100%;

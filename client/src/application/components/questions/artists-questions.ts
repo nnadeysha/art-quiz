@@ -5,59 +5,10 @@ import "../../../styles/questions.css"
 import "../../../styles/artists-questions.css";
 import {SliderCircle} from "./slider-circle"
 import { IGameFieldOptions, IGameResult } from "../../dto";
-import imagesJSON from "../../../assets/images.json"
-import { IQuestionInfo } from "../../data-holder";
-
-
-export interface IAnswersInfo{
-  
-/* question: string;
-image: string;
-answers: string;
-correct_answer: string; */
-author: string;
-    name: string;
-    year: string;
-    imageNum: string;
-
-
-}
-//import image from '../assets/img/0.webp';
-
-
-export class DataHolder {
-  public answersInfo: IAnswersInfo[];
-  
-
-  constructor() {
-    console.log(imagesJSON)
-  }
-
-  loadQuestionsInfo(): Promise<IAnswersInfo[]> {
-    
-    return fetch(imagesJSON)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        this.answersInfo = data;
-        console.log(this.answersInfo)
-        return data;
-      });
-  }
-
-  getQuestionsTicketInfo(imageNum: number) {
-    
-    const ticketQuestions = this.answersInfo.filter((answer) => {
-      return (
-        Number.parseInt(answer.imageNum.split(' ')[1]) === imageNum
-      );
-    });
-
-    return ticketQuestions;
-  } 
-}
-
+import { Categories} from "../categories/categories";
+import {ModalWindow} from "../modal-windows/modal-window";
+import {GameDataModel} from "../loaders/img-loader";
+import  {DataHolder, ICardData, ICategoryData}  from "../../data-holder";
 
 export class QuestionsArtists extends Control{
     questionsHeader: QuestionsHeader;
@@ -77,7 +28,10 @@ export class QuestionsArtists extends Control{
 public onChooseCategory: (options: IGameFieldOptions) => void;
     onFinish: (result: IGameResult) => void;
   questionsMainWrapper: Control<HTMLElement>;
-    constructor(parentNode: HTMLElement, answers: IAnswersInfo[]){
+  gameModel: GameDataModel;
+  public onNextQuestion: ()=> void;
+  onNextClick: () => void;
+    constructor(parentNode: HTMLElement, data: ICardData){
         super(parentNode, "div", "questions-block");
 
         this.questionsWrapper = new Control(this.node, "div", "questions-wrapper")
@@ -87,26 +41,43 @@ public onChooseCategory: (options: IGameFieldOptions) => void;
         this.artistQuestion = new Control(this.questionsArtistMain.node, "div", "artist-question", "WHO IS THE AUTHOR OF THIS PICTURE?");
         this.artistAnswerSlider = new Control(this.questionsArtistMain.node, "div", "answer-slider");
         this.artistPicture = new Control(this.artistAnswerSlider.node, "div", "artist-picture");
+        this.artistPicture.node.style.background = `url(${data.image})` //!!!!!!!!!!!!
+        this.artistPicture.node.style.backgroundPosition = "center";
+        this.artistPicture.node.style.backgroundRepeat = "no-repeat";
+        this.artistPicture.node.style.backgroundSize =  "cover";
         this.slider = new SliderCircle(this.artistAnswerSlider.node)
         this.artistAnswers = new Control(this.questionsArtistMain.node, "div", "artist-answers");
         this.artistAnswer = new Control(this.artistAnswers.node, "button", "artist-answer");
+        this.artistAnswer.node.textContent = data.author;//!!!!!!!!!!!!
         this.artistAnswer = new Control(this.artistAnswers.node, "button", "artist-answer");
+        this.artistAnswer.node.textContent = data.author;//!!!!!!!!!!!!
         this.artistAnswer = new Control(this.artistAnswers.node, "button", "artist-answer");
+        this.artistAnswer.node.textContent = data.author;//!!!!!!!!!!!!
         this.artistAnswer = new Control(this.artistAnswers.node, "button", "artist-answer");
-        //this.artistAnswer.node.textContent = answers.values.toString
+        this.artistAnswer.node.textContent = data.author;//!!!!!!!!!!!!
         
         this.footer = new Footer(this.node);
-
-        this.onChooseCategory = () =>{
-          const categories = answers.filter((answers) =>{
-            answers.imageNum.slice(1, 10)
-            console.log(answers)
-          })
+       /*  const dataHolder = new DataHolder();
+        dataHolder.build().then(loadingResult =>{
+          new QuestionsArtists(this.node, loadingResult.base.categories[2].cardsArr[1])
+          console.log(loadingResult.base);
+          let img = new Image();
+          img.src = "../assets/" + loadingResult.base.categories[2].cardsArr[1].image;
+          console.log(img);
+          document.body.append(img);
         }
+          ); */
+        
+        this.artistAnswers.node.onclick = () => {
+          this.onNextQuestion()
+          //const modal = new ModalWindow(parentNode)
+        }
+        this.onSelectedArtist()
+        
         
     }
     onSelectedArtist(){
-      
+     console.log()
     }
     getAtristsQuestions(){
 

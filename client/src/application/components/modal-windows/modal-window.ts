@@ -23,13 +23,29 @@ export class ModalWindow extends Control {
         this.modalGameOver= new GameOvertModalWindow(this.modalWindow.node)
     }
 
-    hide() {
-        this.node.classList.remove("show");
-        this.node.classList.add("hide");
+   /*  getModalForAnswer(){
+      if(correct){
+        const correct = new CorrectOrWrongAnswerModal(this.modalWindow.node);
+        correct.node.classList.remove('wrong');
+        correct.node.classList.add('correct');
       }
-    
-      show(){
-        this.node.classList.remove("hide");
-        this.node.classList.add("show");
+      if(incorrect){
+        const wrong = new CorrectOrWrongAnswerModal(this.modalWindow.node);
+        wrong.node.classList.add('correct');
+        wrong.node.classList.add('wrong');
       }
+    } */
+
+   /*  getModalForWinOrGameOver(){
+      if(correctAnswer >= 8 &&correctAnswer < 10){
+        const congrat = new CongratModalWindow(this.modalWindow.node)
+        congrat.scoreCongrat = `${correctAnswer}/10`
+      }
+      if(correctAnswer < 8){
+        const gameover = new GameOvertModalWindow(this.modalWindow.node);
+      }
+      if(correctAnswer == 10){
+        const grandgame = new GrandModalWindow(this.modalWindow.node)
+      }
+    } */
 }

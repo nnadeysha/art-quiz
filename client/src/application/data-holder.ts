@@ -1,61 +1,99 @@
-import imagesJSON from "../assets/images.json";
-
-console.log(imagesJSON)
-//import image from '../assets/img/0.webp';
-
-export interface IAnswer {
-  answer_text: string;
-  is_correct: boolean;
+export interface IApplicationData {
+  categories: Array<ICategoryData>;
+}
+export interface ICategoryData {
+  name: string;
+  cardsArr: Array<ICardData>;
 }
 
-
-export interface IQuestionInfo {
-  /* title: string;
-  ticket_number: string; */
+export interface ICardData {
+  author: string;
+  name: string;
+  year: string;
   imageNum: string;
-  question: string;
   image: string;
-  answers: Array<IAnswer>;
-  correct_answer: string;
-  /* answer_tip: string;
-  topic: string; */
+}
+interface ICardRawData {
+  author: string;
+  name: string;
+  year: string;
+  imageNum: string;
 }
 
+class CardsData implements ICardData {
+  public author: string;
+  public name: string;
+  public year: string;
+  public imageNum: string;
+  public image: string;
+  constructor(
+    author: string,
+    name: string,
+    year: string,
+    imageNum: string,
+    image: string
+  ) {
+    this.author = author;
+    this.name = name;
+    this.year = year;
+    this.imageNum = imageNum;
+    this.image = `../assets/img/${imageNum}.webp`;
+  }
+
+  static fromJson(json: any) {
+    return new CardsData(
+      json.author,
+      json.name,
+      json.year,
+      json.imageNum,
+      json.image
+    );
+  }
+}
+
+class ApplicationData implements IApplicationData {
+  public categories: Array<ICategoryData>;
+  constructor(data: Array<ICategoryData>) {
+    this.categories = data;
+  }
+
+  static fromJson(data: any) {
+    const categories: Array<string> = data[0];
+    const categoryRecords= data[1] /* Array<Array<ICardRawData>> = data.slice(1); */
+    
+
+    const formattedCategories: Array<ICategoryData> = categories.map(
+      (item, index) => {
+        const category: ICategoryData = {
+          name: item,
+          cardsArr: categoryRecords.map((cardsRawData: any) =>
+            CardsData.fromJson(cardsRawData)
+          ),
+        };
+        return category;
+      }
+    );
+    return new ApplicationData(formattedCategories);
+  }
+}
 export class DataHolder {
-  public questionsInfo: IQuestionInfo[];
+  public base: ApplicationData;
+  constructor() {}
 
-  constructor() {
-    
+  public async build() {
+    const applicationData = await this.getBase();
+    this.base = applicationData;
+
+   /*  */
+    return this;
   }
 
-  loadQuestionsInfo(): Promise<IQuestionInfo[]> {
-    
-    return fetch(imagesJSON)
-      .then((res) => {
+  private getBase() {
+    return fetch("../assets/images.json")
+      .then((res) => res.json())
+      .then((data: Array<any>) => {
+        return ApplicationData.fromJson(data);
         
-        return res.json();
-       
-
-      })
-      .then((data) => {
-        
-        this.questionsInfo = data;
-        console.log(this.questionsInfo)
-        return data;
       });
-      
-  }
-
-  getQuestionsTicketInfo(imageNum: number) {
-    
-    const ticketQuestions = this.questionsInfo.filter((question) => {
-      return (
-        Number.parseInt(question.imageNum.split(' ')[1]) === imageNum
-      );
-    });
-
-    return ticketQuestions;
   }
 }
-
-
