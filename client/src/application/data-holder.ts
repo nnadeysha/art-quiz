@@ -5,7 +5,6 @@ export interface ICategoryData {
   name: string;
   cardsArr: Array<ICardData>;
 }
-
 export interface ICardData {
   author: string;
   name: string;

@@ -5,7 +5,7 @@ import "../../../styles/questions.css"
 import "../../../styles/artists-questions.css";
 import {SliderCircle} from "./slider-circle"
 import { IGameFieldOptions, IGameResult } from "../../dto";
-import { Categories} from "../categories/categories";
+import { Categories} from "../../categories";
 import {ModalWindow} from "../modal-windows/modal-window";
 import {GameDataModel} from "../loaders/img-loader";
 import  {DataHolder, ICardData, ICategoryData}  from "../../data-holder";
@@ -67,6 +67,7 @@ public onChooseCategory: (options: IGameFieldOptions) => void;
           document.body.append(img);
         }
           ); */
+
         
         this.artistAnswers.node.onclick = () => {
           this.onNextQuestion()
@@ -80,7 +81,16 @@ public onChooseCategory: (options: IGameFieldOptions) => void;
      console.log()
     }
     getAtristsQuestions(){
-
+      const dataHolder = new DataHolder();
+      dataHolder.build().then(loadingResult =>{
+        new QuestionsArtists(this.node, loadingResult.base.categories[2].cardsArr[1])
+        console.log(loadingResult.base);
+        let img = new Image();
+        img.src = "../assets/" + loadingResult.base.categories[2].cardsArr[1].image;
+        console.log(img);
+        document.body.append(img);
+      }
+        ); 
    }
 
    /* async getData(){

@@ -10,23 +10,18 @@ export class CategoriesHeader extends Control {
     scoreBtn: Control<HTMLElement>;
     public onSelect: (result: boolean) => void;
     public onSelectHome: (result: boolean) => void;
+    onBack: () => void;
     constructor(parentNode:HTMLElement){
         super(parentNode, "div", "categories-header", "");
         this.headerLeft = new Control(this.node, "div", "header-left");
         this.logoDoubleColor = new Control(this.headerLeft.node, "div", 'header-logo-dcolor');
         this.headerNavigation = new Control(this.headerLeft.node, "div", "header-navigation");
-        this.homeBtn = new Control(this.headerNavigation.node, "a", "home", "Home")
-        this.categoriesBtn= new Control(this.headerNavigation.node, "a", "categories", "Categories")
+        const homeBtn = new Control(this.headerNavigation.node, "a", "home", "Home");
+        
+        const categoriesBtn= new Control(this.headerNavigation.node, "a", "categories", "Categories")
         this.scoreBtn= new Control(this.headerNavigation.node, "a", "score", "Score")
         this.settingsIcon = new Control(this.node, "button", "settings-icon")
 
-        this.settingsIcon.node.onclick = () => {
-            this.onSelect(true);
-          };
-
-          this.homeBtn.node.onclick = ()=>{
-              this.onSelectHome(true)
-          }
         
     }
     

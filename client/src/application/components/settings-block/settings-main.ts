@@ -62,6 +62,6 @@ export class SettingsMain extends Control{
 
         this.settigsAcceptBlock = new Control(this.node, "div", "settings-accept-block");
         this.defaultBtn = new Control(this.settigsAcceptBlock.node, 'button', 'default-settings-button', 'Default');
-        this.saveBtn = new Control(this.settigsAcceptBlock.node, 'button', 'save-settings-button', 'Save');
+        //this.saveBtn = new Control(this.settigsAcceptBlock.node, 'button', 'save-settings-button', 'Save');
     }
 }

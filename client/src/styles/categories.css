@@ -3,6 +3,9 @@
   background-color: black;
  
 }
+a {
+  color: #fff;
+}
 .categories-screen {
   margin: 0 auto;
   display: flex;
@@ -80,6 +83,10 @@
 
 .heading {
   margin-bottom: 10px;
+ 
+}
+.categories-wrapper> div{
+  margin-left: 20px;
 }
 .card {
   margin: 12px;
@@ -105,6 +112,7 @@
   width: 195px;
   border-radius: 25px;
   margin-top: 10px;
+  
   position: relative;
   z-index: 1;
   transition: all 0.5s ease;

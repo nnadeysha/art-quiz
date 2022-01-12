@@ -1,35 +1,28 @@
 import Control from "../common/control";
-import { MainScreen } from "./components/main";
-import { SettingsScreen } from "./components/settings-block/settings";
-import { Categories } from "./components/categories/categories";
-import { QuestionsArtists } from "./components/questions/artists-questions";
-import { QuestionsPictures } from "./components/questions/pictures-questions";
-import { ModalWindow } from "./components/modal-windows/modal-window";
-import Signal from "../common/signal";
-import  {DataHolder, ICardData, ICategoryData}  from "./data-holder";
+import { StartPage } from "./startPage";
+import { SettingsPage } from "./settings";
+import { Categories } from "./categories";
+import { GameFieldPage } from "./gameFieldPage";
+import { GameOverPage} from "./gameOverPage"
 export class Application extends Control {
   wrapper: Control<HTMLElement>;
-  questionsArtists: QuestionsArtists;
-  questionsPictures: QuestionsPictures;
-  mainScreen: MainScreen;
-  categoriesBlock: Categories;
-  settingsScreen: SettingsScreen;
-  modalWindow: ModalWindow;
+
+  startPage: StartPage;
   audio: HTMLAudioElement;
-  
-  onNextClick: () => void;
+
   constructor(parentNode: HTMLElement) {
     super(parentNode, "div", "div", "");
-    this.wrapper = new Control(this.node, "main", "wrapper");
-    
+    this.mainCycle();
+
+    //this.wrapper = new Control(this.node, "main", "wrapper");
+
     const preloader = new Control(this.node, "div", "", "LOADING");
 
-    console.log(`Уважаемые проверяющие, к сожалению я не успела выполнить работу, если у вас есть такая возможность, проверьте её пожалуйста в четверг вечером. Буду очень признательна))`)
     /* this.dataHolder.loadQuestionsInfo().then((data) => {
       preloader.destroy();
       
     });   */
-    this.buildMainPage();
+    //this.buildMainPage();
     /* this.mainScreen = new MainScreen(this.wrapper.node);
     this.settingsScreen = new SettingsScreen(this.wrapper.node);
     this.categoriesBlock = new Categories(this.wrapper.node);
@@ -37,12 +30,67 @@ export class Application extends Control {
     this.questionsPictures = new QuestionsPictures(this.wrapper.node);
     this.modalWindow = new ModalWindow(this.wrapper.node); */
     this.audio = new Audio();
-    
   }
-
-  buildMainPage() {
+  private gameCycle(gameName: string, categoriesIndex: number){
+    const gameField = new GameFieldPage(this.node, {
+      gameName: gameName,
+      categoriesIndex: categoriesIndex,
+    });
+    gameField.onHome = () => {
+      gameField.destroy();
+      this.mainCycle();
+    };
+    gameField.onBack= ()=>{
+      gameField.destroy();
+      this.categoriesCycle(gameName)
+    }
+    gameField.onFinish = (result) =>{
+      gameField.destroy();
+      const gameOverPage = new GameOverPage(this.node, result);
+      gameOverPage.onHome = ()=>{
+        gameOverPage.destroy();
+        this.mainCycle()
+      }
+      gameOverPage.onNext = ()=>{
+        gameOverPage.destroy();
+        this.gameCycle(gameName, categoriesIndex+1)
+      }
+    }
+  }
+private categoriesCycle(gameName: string){
+  const categories = new Categories(this.node, gameName);
+      categories.onBack = () => {
+        categories.destroy();
+        this.mainCycle();
+      };
+      categories.onSelect = (index) => {
+        categories.destroy();
+        this.gameCycle(gameName, index)
+      };
+}
+  private mainCycle() {
+    const startPage = new StartPage(this.node); //wrapper.node
+    startPage.onGameSelect = (gameName) => {
+      startPage.destroy();
+      this.categoriesCycle(gameName)
+    };
+    startPage.onSettings = () => {
+      startPage.destroy();
+      const settingsPage = new SettingsPage(this.node);
+      settingsPage.onBack = () => {
+        settingsPage.destroy();
+        this.mainCycle();
+      };
+      settingsPage.onSave = (settings) => {
+        console.log(settings);
+        settingsPage.destroy();
+        this.mainCycle();
+      };
+    };
+  }
+  /* buildMainPage() {
     console.log("m");
-    const main = new MainScreen(this.wrapper.node);
+    const main = new StartPage(this.wrapper.node);
 
     main.onSelect = () => {
       this.onPlayClick();
@@ -92,6 +140,7 @@ export class Application extends Control {
           this.onPlayClick();
           setTimeout(() => {
             category.destroy();
+            console.log('f')
             const dataHolder = new DataHolder();
             dataHolder.build().then(loadingResult =>{
               const showQuestion = (categoryIndex: number,questionIndex: number, onFinish:()=>void)=>{
@@ -131,7 +180,7 @@ export class Application extends Control {
   }
 
   onCloseOpenSettings() {
-    const sett = new SettingsScreen(this.wrapper.node);
+    const sett = new SettingsPage(this.wrapper.node);
 
     sett.onSelect = () => {
       this.onPlayClick();
@@ -147,5 +196,5 @@ export class Application extends Control {
     this.audio.src = "./assets/audio/click.mp3";
     this.audio.play();
   }
-
+ */
 }
