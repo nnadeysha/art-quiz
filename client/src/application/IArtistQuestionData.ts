@@ -1,3 +1,4 @@
 export interface IArtistQuestionData{
-    answers: Array<any>
+    answers: Array<any>;
+    correctAnswerIndex: number;
     }
