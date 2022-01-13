@@ -1,6 +1,7 @@
 import Control from "../common/control";
 import { ArtistQuestionView } from "./artistQuestionView";
 import { IArtistQuestionData } from "./IArtistQuestionData";
+import { PicturesQuestionView } from "./picturesQuestionView";
 interface IQuizOptions {
   gameName: string;
   categoriesIndex: number;
@@ -41,13 +42,14 @@ export class GameFieldPage extends Control {
       { answers: [1, 2, 3, 4], correctAnswerIndex:3 }
     ];
     this.results = [];
-    this.questionCycle(questions, 0, ()=>{
+    this.questionCycle(gameOptions.gameName,questions, 0, ()=>{
       this.onFinish(this.results);
     });
    
   }
 
   questionCycle(
+    gameName: string,
     questions: Array<IArtistQuestionData>,
     index: number,
     onFinish: () => void
@@ -59,11 +61,24 @@ export class GameFieldPage extends Control {
     this.progressIndicator.node.textContent = `${index+1} / ${questions.length}`;
     this.answersIndicator.node.textContent = this.results.map(it=>
       it?'+':'-').join(' ');
-    const question = new ArtistQuestionView(this.node, questions[index]);
-    question.onAnswer = answerIndex => {
-      question.destroy();
-      this.results.push(answerIndex === questions[index].correctAnswerIndex)
-      this.questionCycle(questions, index + 1, onFinish);
-    };
+      
+      if(gameName == 'artists'){
+        const question = new ArtistQuestionView(this.node, questions[index]);
+        question.onAnswer = answerIndex => {
+          question.destroy();
+          this.results.push(answerIndex === questions[index].correctAnswerIndex)
+          this.questionCycle(gameName, questions, index + 1, onFinish);
+        };
+      }else if(gameName == 'pictures'){
+        const question = new PicturesQuestionView(this.node, questions[index]);
+        question.onAnswer = answerIndex => {
+          question.destroy();
+          this.results.push(answerIndex === questions[index].correctAnswerIndex)
+          this.questionCycle(gameName, questions, index + 1, onFinish);
+        };
+      } else{
+        throw new Error('Game type is not exists');
+      }
+    
   }
 }
