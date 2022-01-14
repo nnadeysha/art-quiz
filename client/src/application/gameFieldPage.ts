@@ -62,7 +62,7 @@ export class GameFieldPage extends Control {
     this.answersIndicator.node.textContent = this.results.map(it=>
       it?'+':'-').join(' ');
       
-      if(gameName == 'artists'){
+      if(gameName == 'artist'){
         const question = new ArtistQuestionView(this.node, questions[index]);
         question.onAnswer = answerIndex => {
           question.destroy();
